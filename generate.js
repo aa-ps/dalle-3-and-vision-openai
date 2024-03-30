@@ -7,9 +7,9 @@ import { cwebp } from "webp-converter";
 // Load the environment variables from a .env file into process.env
 import "dotenv/config";
 
-// Declare a constant for the text prompt, set to an empty string for now.
-const PROMPT = "A dog eating a pancake";
-
+// Declare a constant for the text prompt
+const PROMPT = "A dog and cat sharing a pancake";
+const PATH = "images"
 // Initialize an instance of the OpenAI API client with your API key
 const openai = new OpenAI({
   apiKey: process.env.API_KEY, // Read the API Key from environment variables for security reasons
@@ -34,7 +34,7 @@ const imageBufferData = Buffer.from(imageBase64Data, "base64");
 // Generate a unique file name based on the current timestamp
 const fileName = Date.now().toString();
 // Construct the full file path for the new image file (PNG format)
-const filePath = `${fileName}.png`;
+const filePath = `${PATH}/${fileName}.png`;
 
 // Write the image data to a file using the Node.js writeFile function
 writeFile(filePath, imageBufferData, (err) => {
